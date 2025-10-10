@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: content">
+<div class="row mt-3">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4>Reservas</h4>
+      <a class="btn btn-success" th:href="@{/reservas/novo}">Nova Reserva</a>
+    </div>
+    <div class="card p-3">
+      <table class="table table-striped">
+        <thead><tr><th>#</th><th>Entrada</th><th>Saída</th><th>Hóspede</th><th>Quarto</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody>
+          <tr th:each="r : ${reservas}">
+            <td th:text="${r.id}">1</td>
+            <td th:text="${r.dataEntrada}">2025-10-20</td>
+            <td th:text="${r.dataSaida}">2025-10-22</td>
+            <td th:text="${r.nomeHospede}">Fulano</td>
+            <td th:text="${r.quarto != null ? r.quarto.numeroQuarto : ''}">101</td>
+            <td th:text="${r.status}">RESERVADO</td>
+            <td>
+              <a th:href="@{|/reservas/editar/${r.id}|}" class="btn btn-sm btn-primary">Editar</a>
+              <form th:action="@{|/reservas/excluir/${r.id}|}" method="post" style="display:inline" onsubmit="return confirm('Excluir?');">
+                <button class="btn btn-sm btn-danger">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</html>

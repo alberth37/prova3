@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: content">
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card p-4">
+      <h3>Bem-vindo ao Sistema de Hotelaria</h3>
+      <p>Use o menu para gerenciar quartos e reservas.</p>
+      <a class="btn btn-primary" th:href="@{/quartos}">Gerenciar Quartos</a>
+      <a class="btn btn-secondary" th:href="@{/reservas}">Gerenciar Reservas</a>
+    </div>
+  </div>
+</div>
+</html>
